@@ -1,0 +1,45 @@
+﻿@{
+
+}
+
+<partial name="_7SegmentDisplayDefs" />
+<div class="multimeter-drop-clamp-btn-container">
+	<p class="multimeter-drop-clamp-btn" onclick="mmDropActiveClamp()">
+		Drop Clamp
+	</p>
+</div>
+<div class="multimeter-main">
+	<div class="multimeter-dial" id="multimeter-dial">
+		<div class="multimeter-dial-rotate-btn" style="cursor: pointer" onclick="mmSetMode(mmModeIndex - 1)"></div>
+		<div class="multimeter-dial-rotate-btn" style="cursor: pointer" onclick="mmSetMode(mmModeIndex + 1)"></div>
+	</div>
+	<div class="multimeter-display">
+		<div style="display: inline-block; vertical-align: top" id="mm-ssd-digit-5">
+			<partial name="_7SegmentDisplay" />
+		</div><div style="display: inline-block; vertical-align: top" id="mm-ssd-digit-4">
+			<partial name="_7SegmentDisplay" />
+		</div><div style="display: inline-block; vertical-align: top" id="mm-ssd-digit-3">
+			<partial name="_7SegmentDisplay" />
+		</div><div style="display: inline-block; vertical-align: top" id="mm-ssd-digit-2">
+			<partial name="_7SegmentDisplay" />
+		</div><div style="display: inline-block; vertical-align: top" id="mm-ssd-digit-1">
+			<partial name="_7SegmentDisplay" />
+		</div><div style="display: inline-block; vertical-align: top" id="mm-ssd-digit-0">
+			<partial name="_7SegmentDisplay" />
+		</div>
+		<p class="multimeter-display-unit" >
+			<span id="multimeter-mode"></span><br />
+			<span id="multimeter-unit"></span>
+		</p>
+	</div>
+</div>
+<script type="text/javascript">
+	function addMultimeterClampsToCanvas() {
+		document.getElementById("circuit-canvas").innerHTML += `
+			<div class="multimeter-clamp multimeter-clamp-r" id="clamp-r" onclick="mmClampClick('clamp-r', 0)"></div>
+			<div class="multimeter-clamp multimeter-clamp-b" id="clamp-b" onclick="mmClampClick('clamp-b', 60)"></div>
+		`;
+	}
+
+	addMultimeterClampsToCanvas();
+</script>

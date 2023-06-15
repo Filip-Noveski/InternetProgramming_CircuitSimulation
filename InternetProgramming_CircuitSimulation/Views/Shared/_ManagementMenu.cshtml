@@ -1,0 +1,226 @@
+﻿@{
+
+}
+
+<div class="management-menu" id="management-menu" onclick="guiHideManagementMenu();">
+    <p class="management-menu-info" id="node-info">
+    </p>
+    <hr class="management-menu-info" />
+    <div id="node-ops"></div>
+</div>
+
+<div class="add-component-popup-background" id="add-component-popup">
+    <div class="add-component-popup">
+        <p class="add-component-popup-tab" onclick="guiShowAddComponentTab('conductor')">
+            Conductor
+        </p><p class="add-component-popup-tab" onclick="guiShowAddComponentTab('voltage-source')">
+            Voltage Source DC
+        </p><p class="add-component-popup-tab" onclick="guiShowAddComponentTab('voltage-source-sin')">
+            Voltage Source Sin
+        </p><p class="add-component-popup-tab" onclick="guiShowAddComponentTab('resistor')">
+            Resistor
+        </p>
+        
+        <div style="display: block" id="add-comp-tab-conductor">
+            <h4 style="padding: 0 3px">Add Conductor</h4>
+            <p class="form-input-set">
+                <span class="form-input-field">
+                    <label class="form-input-label">Direction</label>
+                    <select class="form-input" value="default" id="add-conductor-direction">
+                        <option class="form-input-option" value="left">Left &larr;</option>
+                        <option class="form-input-option" value="top">Top &uarr;</option>
+                        <option class="form-input-option" value="right">Right &rarr;</option>
+                        <option class="form-input-option" value="bottom">Bottom &darr;</option>
+                    </select>
+                </span>
+            </p>
+
+            <div style="display: block">
+                <p class="btn" onclick="guiAddComponent('conductor'); guiHidePopup(addComponentPopupId);">
+                    Add
+                </p><p class="btn" onclick="guiHidePopup(addComponentPopupId);">
+                    Cancel
+                </p>
+            </div>
+        </div>
+        
+        <div style="display: none" id="add-comp-tab-resistor">
+            <h4 style="padding: 0 3px">Add Resistor</h4>
+            <p class="form-input-set">
+                <span class="form-input-field">
+                    <label class="form-input-label">Resistance</label>
+                    <input class="form-input" type="number" id="add-resistor-resistance" />
+                </span>
+                <span class="form-input-field-unit">
+                    <label class="form-input-label">Unit</label>
+                    <select class="form-input" value="0" id="add-resistor-resistance-multiplier">
+                        <option class="form-input-option" value="-9">n&Omega; (E-9)</option>
+                        <option class="form-input-option" value="-6">&mu;&Omega; (E-6)</option>
+                        <option class="form-input-option" value="-3">m&Omega; (E-3)</option>
+                        <option class="form-input-option" value="0">&Omega;</option>
+                        <option class="form-input-option" value="3">k&Omega; (E3)</option>
+                        <option class="form-input-option" value="6">M&Omega; (E6)</option>
+                        <option class="form-input-option" value="9">G&Omega; (E9)</option>
+                    </select>
+                </span>
+            </p>
+            <p class="form-input-set">
+                <span class="form-input-field">
+                    <label class="form-input-label">Direction</label>
+                    <select class="form-input" value="default" id="add-resistor-direction">
+                        <option class="form-input-option" value="left">Left &larr;</option>
+                        <option class="form-input-option" value="top">Top &uarr;</option>
+                        <option class="form-input-option" value="right">Right &rarr;</option>
+                        <option class="form-input-option" value="bottom">Bottom &darr;</option>
+                    </select>
+                </span>
+            </p>
+
+            <div style="display: block">
+                <p class="btn" onclick="guiAddComponent('resistor'); guiHidePopup(addComponentPopupId);">
+                    Add
+                </p><p class="btn" onclick="guiHidePopup(addComponentPopupId);">
+                    Cancel
+                </p>
+            </div>
+        </div>
+        
+        <div style="display: none" id="add-comp-tab-voltage-source">
+            <h4 style="padding: 0 3px">Add Voltage Source</h4>
+            <p class="form-input-set">
+                <span class="form-input-field">
+                    <label class="form-input-label">Voltage</label>
+                    <input class="form-input" type="number" id="add-voltage-source-voltage" />
+                </span>
+                <span class="form-input-field-unit">
+                    <label class="form-input-label">Unit</label>
+                    <select class="form-input" value="0" id="add-voltage-source-voltage-multiplier">
+                        <option class="form-input-option" value="-9">nV (E-9)</option>
+                        <option class="form-input-option" value="-6">&mu;V (E-6)</option>
+                        <option class="form-input-option" value="-3">mV (E-3)</option>
+                        <option class="form-input-option" value="0">V</option>
+                        <option class="form-input-option" value="3">kV (E3)</option>
+                        <option class="form-input-option" value="6">MV (E6)</option>
+                        <option class="form-input-option" value="9">GV (E9)</option>
+                    </select>
+                </span>
+            </p>
+            <p class="form-input-set">
+                <span class="form-input-field">
+                    <label class="form-input-label">Direction</label>
+                    <select class="form-input" value="default" id="add-voltage-source-direction">
+                        <option class="form-input-option" value="left">Left &larr;</option>
+                        <option class="form-input-option" value="top">Top &uarr;</option>
+                        <option class="form-input-option" value="right">Right &rarr;</option>
+                        <option class="form-input-option" value="bottom">Bottom &darr;</option>
+                    </select>
+                </span>
+            </p>
+
+            <div style="display: block">
+                <p class="btn" onclick="guiAddComponent('voltage-source'); guiHidePopup(addComponentPopupId);">
+                    Add
+                </p><p class="btn" onclick="guiHidePopup(addComponentPopupId);">
+                    Cancel
+                </p>
+            </div>
+        </div>
+        
+        <div style="display: none" id="add-comp-tab-voltage-source-sin">
+            <h4 style="padding: 0 3px">Add Voltage Source Sin</h4>
+            <p class="form-input-set">
+                <span class="form-input-field">
+                    <label class="form-input-label">Effective Voltage</label>
+                    <input class="form-input" type="number" id="add-voltage-source-sin-voltageEf" />
+                </span>
+                <span class="form-input-field-unit">
+                    <label class="form-input-label">Unit</label>
+                    <select class="form-input" value="0" id="add-voltage-source-sin-voltageEf-multiplier">
+                        <option class="form-input-option" value="-9">nV (E-9)</option>
+                        <option class="form-input-option" value="-6">&mu;V (E-6)</option>
+                        <option class="form-input-option" value="-3">mV (E-3)</option>
+                        <option class="form-input-option" value="0">V</option>
+                        <option class="form-input-option" value="3">kV (E3)</option>
+                        <option class="form-input-option" value="6">MV (E6)</option>
+                        <option class="form-input-option" value="9">GV (E9)</option>
+                    </select>
+                </span>
+            </p>
+            <p class="form-input-set">
+                <span class="form-input-field">
+                    <label class="form-input-label">Frequency</label>
+                    <input class="form-input" type="number" id="add-voltage-source-sin-frequency" />
+                </span>
+                <span class="form-input-field-unit">
+                    <label class="form-input-label">Unit</label>
+                    <select class="form-input" value="0" id="add-voltage-source-sin-frequncy-multiplier">
+                        <option class="form-input-option" value="-9">nHz (E-9)</option>
+                        <option class="form-input-option" value="-6">&mu;Hz (E-6)</option>
+                        <option class="form-input-option" value="-3">mHz (E-3)</option>
+                        <option class="form-input-option" value="0">Hz</option>
+                        <option class="form-input-option" value="3">kHz (E3)</option>
+                        <option class="form-input-option" value="6">MHz (E6)</option>
+                        <option class="form-input-option" value="9">GHz (E9)</option>
+                    </select>
+                </span>
+            </p>
+            <p class="form-input-set">
+                <span class="form-input-field">
+                    <label class="form-input-label">Phase</label>
+                    <input class="form-input" type="number" id="add-voltage-source-sin-phase" />
+                </span>
+                <span class="form-input-field-unit">
+                    <label class="form-input-label">Unit</label>
+                    <select class="form-input" value="0" id="add-voltage-source-sin-phase-multiplier">
+                        <option class="form-input-option" value="0">rad</option>
+                        <option class="form-input-option" value="-1.7581226">&deg;</option>
+                    </select>                                   @*to radians, log10(pi / 180)*@
+                </span>
+            </p>
+            <p class="form-input-set">
+                <span class="form-input-field">
+                    <label class="form-input-label">Direction</label>
+                    <select class="form-input" value="default" id="add-voltage-source-sin-direction">
+                        <option class="form-input-option" value="left">Left &larr;</option>
+                        <option class="form-input-option" value="top">Top &uarr;</option>
+                        <option class="form-input-option" value="right">Right &rarr;</option>
+                        <option class="form-input-option" value="bottom">Bottom &darr;</option>
+                    </select>
+                </span>
+            </p>
+
+            <div style="display: block">
+                <p class="btn" onclick="guiAddComponent('voltage-source-sin'); guiHidePopup(addComponentPopupId);">
+                    Add
+                </p><p class="btn" onclick="guiHidePopup(addComponentPopupId);">
+                    Cancel
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="add-component-popup-background" id="add-branch-popup">
+    <div class="add-component-popup">
+        <h4 style="padding: 0 3px">Create Branch</h4>
+        <p class="form-input-set">
+            <span class="form-input-field">
+                <label class="form-input-label">Direction</label>
+                <select class="form-input" value="default" id="add-branch-direction">
+                    <option class="form-input-option" value="left">Left &larr;</option>
+                    <option class="form-input-option" value="top">Top &uarr;</option>
+                    <option class="form-input-option" value="right">Right &rarr;</option>
+                    <option class="form-input-option" value="bottom">Bottom &darr;</option>
+                </select>
+            </span>
+        </p>
+
+        <div style="display: block">
+            <p class="btn" onclick="guiCreateBranch(); guiHidePopup(addBranchPopupId);">
+                Add
+            </p><p class="btn" onclick="guiHidePopup(addBranchPopupId);">
+                Cancel
+            </p>
+        </div>
+    </div>
+</div>

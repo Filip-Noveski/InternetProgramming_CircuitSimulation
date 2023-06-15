@@ -1,0 +1,388 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    /*font-family: Consolas;*/
+    font-family: Bahnschrift, Arial;
+}
+
+.electric-circuit-canvas {
+    font-family: 'Cambria Math';
+    display: inline-block;
+    width: 85%;
+    height: 600px;
+    overflow: hidden;
+    border: 1.5px solid #000000;
+    /*border-radius: 3px 3px 0 0;*/
+    position: relative;
+}
+
+.electric-component-container {
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 92px;
+    height: 92px;
+    cursor: pointer;
+}
+
+    .electric-component-container:hover .electric-component-symbol {
+        filter: drop-shadow(1px 1px 3px #003333BB);
+        -webkit-filter: drop-shadow(1px 1px 3px #003333BB);
+    }
+
+.electric-component-wrapper {
+    position: relative;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.electric-component-symbol {
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 92px;
+    height: 92px;
+    margin: 0px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition: 0.5s all ease-in-out;
+}
+
+.electric-component-value-top {
+    font-size: 10pt;
+    display: inline-block;
+    position: absolute;
+    width: 96px;
+    height: 32px;
+    left: 0;
+    top: 16px;
+    text-align: center;
+    font-style: oblique;
+}
+
+.electric-component-value-left {
+    font-size: 10pt;
+    display: inline-block;
+    position: absolute;
+    width: 64px;
+    height: 32px;
+    left: 0;
+    top: 32px;
+    text-align: left;
+    font-style: oblique;
+}
+
+.node {
+    position: absolute;
+    border: 1px solid #000000;
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    transition: 0.5s all;
+    cursor: pointer;
+}
+
+    .node:hover {
+        filter: drop-shadow(1px 1px 3px #0088FFBB);
+        -webkit-filter: drop-shadow(1px 1px 3px #0088FFBB);
+        background-color: #0088FF;
+    }
+    
+.node-mm {
+    position: absolute;
+    border: 1px solid #000000;
+    display: none;
+    width: 8px;
+    height: 8px;
+    background-color: #0088FF !important;
+    transition: 0.5s all;
+    cursor: none !important;
+}
+
+    .node-mm:hover {
+        filter: drop-shadow(1px 1px 3px #0088FFBB);
+        -webkit-filter: drop-shadow(1px 1px 3px #0088FFBB);
+        background-color: #00FF99 !important;
+    }
+
+.electric-component-node {
+    border-radius: 50%;
+}
+
+.junction-node {
+    border-radius: 2px;
+    z-index: 10 !important;
+}
+
+.source-node {
+    background-color: #DD0000;
+    z-index: 5;
+}
+
+.terminal-node {
+    background-color: #00DD00;
+    z-index: 4;
+}
+
+.branch-node {
+    background-color: #FF8800;
+    z-index: 6;
+}
+
+.branch-node-top {
+    border-radius: 50% 50% 0 0;
+}
+
+.branch-node-right {
+    border-radius: 0 50% 50% 0;
+}
+
+.branch-node-bottom {
+    border-radius: 0 0 50% 50%;
+}
+
+.branch-node-left {
+    border-radius: 50% 0 0 50%;
+}
+
+.management-menu {
+    width: 196px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: none;
+    opacity: 0;
+    transition: 0.5s opacity, background-color ease-in-out;
+    z-index: 50;
+    backdrop-filter: blur(1px);
+}
+
+.management-menu-info {
+    width: 100%;
+    padding: 3px 6px;
+    background-color: #202020dd;
+    color: #FFFFFF;
+    font-size: 12pt;
+    transition: 0.5s all ease-in-out;
+    margin: 0;
+    border-radius: 6px 6px 0 0;
+}
+
+.management-menu-option {
+    width: 100%;
+    padding: 3px 6px;
+    background-color: #202020dd;
+    color: #FFFFFF;
+    font-size: 12pt;
+    transition: 0.5s all ease-in-out;
+    cursor: pointer;
+    margin: 0;
+}
+
+    .management-menu-option:hover {
+        background-color: #484848;
+    }
+
+    .management-menu-option:first-child {
+        /*border-radius: 6px 6px 0 0; /* Because it is first child of wrong div */
+    }
+
+    .management-menu-option:last-child {
+        border-radius: 0 0 6px 6px;
+    }
+
+.btn {
+    display: inline-block;
+    padding: 3px 6px;
+    border: 1px solid #303030;
+    border-radius: 2px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.5s all;
+    font-size: 13pt;
+    color: #303030;
+    background: #dddddd;
+    cursor: pointer;
+    margin: 6px;
+}
+
+    .btn:hover {
+        box-shadow: #202020 2px 3px 3px;
+        background-color: #eeeeee;
+        color: #000000;
+        border-color: #000000;
+        font-weight: 900;
+    }
+
+.add-component-popup-background {
+    position: absolute;
+    display: none; /*otherwise flex*/
+    opacity: 0;
+    flex-direction: column;
+    align-content: space-around;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(3px);
+    z-index: 200;
+    transition: 0.5s opacity ease-in-out;
+}
+
+.add-component-popup {
+    display: inline-block;
+    width: 50%;
+    height: min-content;
+    max-height: 90%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin: 0 25%;
+    background: #FFFFFF;
+    border: 1px solid #000000;
+    border-radius: 3px;
+}
+
+.add-component-popup-tab {
+    flex: 0 0 content;
+    display: inline-block;
+    min-width: 96px;
+    margin: 0;
+    padding: 3px 6px;
+    background: #AAAAAA;
+    color: #000000;
+    border-bottom: 3px solid transparent;
+    border-left: 1px solid #222222;
+    transition: 0.5s all;
+    cursor: pointer;
+    flex-grow: 1;
+}
+
+    .add-component-popup-tab:hover {
+        border-color: #0088FFBB;
+    }
+
+    .add-component-popup-tab:first-child {
+        border-left: none;
+    }
+
+    .add-component-popup:nth-child(1) {
+    }
+
+.add-component-popup-tab-icon {
+    display: inline-block;
+    width: 15pt;
+    height: 15pt;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    vertical-align: bottom;
+}
+
+.form-input-set {
+    margin: 6px;
+    width: 100%;
+    display: inline-block;
+}
+
+.form-input-field {
+    display: inline-block;
+    width: 85%;
+    border: 1px solid;
+    border-radius: 2px;
+    padding: 6px;
+    border-color: #303030;
+    color: #303030;
+    background: #bbbbbb;
+}
+
+.form-input-field-unit {
+    display: inline-block;
+    width: 25%;
+    border: 1px solid;
+    border-radius: 2px;
+    padding: 6px;
+    border-color: #303030;
+    color: #303030;
+    background: #bbbbbb;
+}
+
+.form-input-label {
+    font-size: 11pt;
+}
+
+.form-input {
+    font-size: 11pt;
+    width: 97.5%;
+    background: none;
+    background-color: transparent;
+    border-color: transparent;
+    color: #000000;
+}
+
+    .form-input:focus {
+        outline: none;
+    }
+
+.form-input-option {
+    background: #dddddd;
+    color: #202020;
+}
+
+.measuring-devices-container {
+    background: #EEEEEE;
+    z-index: 30;
+    display: flex;
+    width: 85%;
+    height: 33px;
+    margin-top: -7px;
+    overflow: hidden;
+    border-left: 1px solid #000000;
+    border-right: 1px solid #000000;
+    transition: 0.5s all ease-in-out;
+}
+
+.measuring-device-container {
+    display: none;
+    overflow: hidden;
+    transition: 0.5s all ease-in-out;
+    position: absolute;
+    bottom: 0px;
+    right: -250px;
+    overflow: visible;
+}
+
+.circuit-toolbar {
+    background: #EEEEEE;
+    z-index: 30;
+    display: flex;
+    width: 85%;
+    height: 33px;
+    margin-bottom: 0px;
+    overflow: hidden;
+    border: 1px solid #000000;
+    border-bottom: none;
+    border-radius: 3px 3px 0 0 ;
+    transition: 0.5s all ease-in-out;
+}

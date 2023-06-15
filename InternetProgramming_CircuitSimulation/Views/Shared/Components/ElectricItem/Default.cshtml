@@ -1,0 +1,32 @@
+﻿@using InternetProgramming_CircuitSimulation.Classes;
+@{
+	string id = ViewBag.Id;
+	string symbol = ViewBag.PathToSymbol;
+	int rotation = int.Parse(ViewBag.Rotation);
+	int left = int.Parse(ViewBag.Left);
+	int top = int.Parse(ViewBag.Top);
+	string value = ViewBag.Value;
+
+	double nodeLeft = 46 * (-Math.Cos(rotation / 180.0 * Math.PI)) + 42;	// 32 offset + 16 margin - 8 node width
+	double nodeBottom = 46 * Math.Sin(rotation / 180.0 * Math.PI) + 42;		// 32 offset + 16 margin - 8 node height
+	double menuLeft = left + 46 * (-Math.Cos(rotation / 180.0 * Math.PI)) + 52;			// 32 offset + 16 margin - 8 node width + 10 menu offset
+	double menuTop = top + 46 * Math.Sin(rotation / 180.0 * Math.PI + Math.PI) + 52;    // 32 offset + 16 margin - 8 node height + 10 menu offset
+}
+
+<div class="electric-component-container" style="left: @(left)px; top: @(top)px">
+	<div class="electric-component-wrapper">
+		<div class="electric-component-symbol" style="background-image: url('@symbol'); transform: rotate(@(rotation / 360.0)turn)" onclick="/*document.getElementById('root-node-@(id)').click()*/"></div>
+		@if (rotation % 180 is > 45 and <= 135)
+		{
+			<p class="electric-component-value-left">@value</p>
+		}
+		else
+		{
+			<p class="electric-component-value-top">@value</p>
+		}
+		<div class="node electric-component-node source-node" id="root-node-@(id)" style="left: @(nodeLeft)px; bottom: @(nodeBottom)px" onclick="guiShowManagementMenu('@(menuLeft)px', '@(menuTop)px', '@(id)', 'component')"></div>
+		<div class="node electric-component-node terminal-node" style="right: @(nodeLeft)px; top: @(nodeBottom)px" onclick="guiShowManagementMenu('@(menuLeft)px', '@(menuTop)px', '@(id)', 'terminal')"></div>
+		<div class="node-mm electric-component-node source-node" id="src>>@(id)" style="left: @(nodeLeft)px; bottom: @(nodeBottom)px" onclick="mmSetActiveClamp('src>>@(id)')"></div>
+		<div class="node-mm electric-component-node terminal-node" style="right: @(nodeLeft)px; top: @(nodeBottom)px" onclick="mmSetActiveClamp('ter>>@(id)')"></div>
+	</div>
+</div>

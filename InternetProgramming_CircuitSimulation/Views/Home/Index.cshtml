@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@*<vc:electric-item component="voltageSourceDC" rotation="0" left="10" top="10" value="320V"></vc:electric-item>
+*@
+<input style="display: none" type="file" id="in-circuit-script" />
+
+<partial name="_CircuitToolbar" />
+<div class="electric-circuit-canvas" id="circuit-canvas">
+    <partial name="_ManagementMenu" />
+    <partial name="_MeasuringDevices" />
+</div>
+<partial name="_MeasuringDevicesTabs" />
+<!--
+
+--><div class="cli-area"> @*avoiding whitespace*@
+    <div class="cli-log-container" id="cli-log-container">
+        <div class="cli-log" id="cli-log"></div>
+    </div>
+    <input class="cli-input" type="text" id="cli-input" onkeyup="parseCliInput(event);" onfocus="focusCliInput()" onfocusout="focusOutCliInput()" />
+    <p class="cli-input-p" id="cli-input-p"></p>
+    <p class="cli-input-p cli-input-cursor" id="cli-input-cursor">_</p>
+</div>

@@ -1,0 +1,106 @@
+﻿.multimeter-main {
+    display: inline-block;
+    position: relative;
+    width: 192px;   /* 512 */
+    height: 252px;  /* 670 */
+    background-image: url('/images/devices/multimeter.svg');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: 0 8px;
+}
+
+.multimeter-clamp {
+    position: absolute;
+    cursor: pointer;
+    display: none;
+    width: 60px;
+    height: 315px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition: 0.5s filter ease-in-out;
+    top: 242px;
+    z-index: 3;
+}
+
+    .multimeter-clamp:hover {
+        filter: drop-shadow(1px 1px 3px #000000BB);
+        -webkit-filter: drop-shadow(1px 1px 3px #000000BB);
+    }
+
+.multimeter-clamp-r {
+    background-image: url('/images/devices/multimeter_clamp_r.svg');
+    right: -250px;
+}
+
+.multimeter-clamp-b {
+    background-image: url('/images/devices/multimeter_clamp_b.svg');
+    right: -250px;
+}
+
+.multimeter-drop-clamp-btn-container {
+    display: inline-block;
+    position: absolute;
+    right: 195px;
+    bottom: 2px;
+    overflow: visible;
+}
+
+.multimeter-drop-clamp-btn {
+    display: inline-block;
+    padding: 6px;
+    cursor: pointer;
+    background: #AAAAAA;
+    border-radius: 6px;
+    transition: 0.5s all;
+    white-space: nowrap;
+    margin: 0;
+}
+
+    .multimeter-drop-clamp-btn:hover {
+        background: #CCCCCC;
+    }
+
+.multimeter-dial {
+    position: absolute;
+    left: 41px;
+    top: 108px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 111px;
+    height: 111px;
+    background-image: url('/images/devices/multimeter_dial.svg');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition: 0.1s transform ease-in;
+}
+
+.multimeter-dial-rotate-btn {
+    display: inline-block;
+    width: 45%;
+    height: 100%;
+}
+
+.multimeter-display {
+    margin: 27px 18px;
+}
+
+.multimeter-display-unit {
+    display: inline-block;
+    font-family: 'Cascadia Mono';
+    font-size: 8pt;
+    margin: 0 0;
+}
+
+.seven-segment-display {
+    display: inline-block;
+    /*margin: .75px;*/
+}
+
+.ssd-segment {
+    fill: #A1CF9F;
+    transition: 0.15s all;
+}

@@ -1,0 +1,9 @@
+
+# DIRECTORIES
+/.vs
+
+# PROJECT FILES
+/*.sln
+/InternetProgramming_CircuitSimulation/bin
+/InternetProgramming_CircuitSimulation/obj/Debug
+/InternetProgramming_CircuitSimulation/obj/Release
